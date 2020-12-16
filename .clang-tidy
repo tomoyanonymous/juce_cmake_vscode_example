@@ -1,0 +1,11 @@
+Checks: "clang-diagnostic-*,\
+clang-analyzer-*,\
+cppcoreguidelines-*,\
+google-*,\
+modernize-*,\
+misc-*,\
+readability-*,\
+performance-*,\
+portability-*,\
+"
+HeaderFilterRegex: '**/Source/*\.(hpp|h)'
