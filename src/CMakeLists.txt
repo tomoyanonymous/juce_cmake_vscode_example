@@ -1,3 +1,15 @@
+if(DEFINED ENV{AAX_SDK_PATH})
+    set(AAX_SDK_PATH $ENV{AAX_SDK_PATH})
+endif()
+if(DEFINED AAX_SDK_PATH)
+    set(AAX_BUILD_FLAG AAX)
+    file(TO_CMAKE_PATH "${AAX_SDK_PATH}" AAX_SDK_CMAKE_PATH)
+    message(STATUS "AAX Build is enabled. AAX SDK = " ${AAX_SDK_CMAKE_PATH})
+    juce_set_aax_sdk_path(${AAX_SDK_CMAKE_PATH})
+else()
+    message(STATUS "AAX Build is disabled. To enable, set AAX_SDK_PATH to your environment variable or specify -DAAX_SDK_PATH to CMake configure option.")
+endif()
+
 juce_add_plugin(ExamplePlugin
     # VERSION ...                                     # Set this if the plugin version is different to the project version
     # ICON_BIG ""   # ICON_* arguments specify a path to an image file to use as an icon for the Standalone
@@ -21,7 +33,7 @@ juce_add_plugin(ExamplePlugin
             # AUv3 
             VST3 
             # Unity 
-            #AAX               
+            ${AAX_BUILD_FLAG}               
     VST3_CATEGORIES "Fx" 
     AU_MAIN_TYPE "kAudioUnitType_Effect"
     # AU_SANDBOX_SAFE TRUE
@@ -48,9 +60,10 @@ target_compile_definitions(ExamplePlugin
     # JUCE_DISPLAY_SPLASH_SCREEN=0 #if your plugin is distributed with GPL license or paid
 )
 
-# juce_add_binary_data(ExamplePluginBinaries
-# SOURCES 
-# )
+juce_add_binary_data(ExamplePluginBinaries
+SOURCES 
+${CMAKE_SOURCE_DIR}/assets/juce-logo.svg
+)
 
 target_sources(ExamplePlugin PRIVATE
     PluginEditor.cpp
@@ -58,7 +71,7 @@ target_sources(ExamplePlugin PRIVATE
 )
 
 target_link_libraries(ExamplePlugin PUBLIC
-# ExamplePluginBinaries
+ExamplePluginBinaries
 juce::juce_audio_basics
 juce::juce_audio_devices
 juce::juce_audio_formats
