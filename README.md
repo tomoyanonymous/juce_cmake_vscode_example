@@ -31,7 +31,13 @@ Install Visual Studio.
 
 ### common
 
-1: Open `juce_cmake_vscode_example.code-workspace` with Visual Studio Code.
+Clone this repository. 
+
+```sh
+git clone https://github.com/tomoyanonymous/juce_cmake_vscode_example --recursive
+```
+
+Open `juce_cmake_vscode_example.code-workspace` with Visual Studio Code.
 If recommended extensions are not fully installed, notification to install them will come up.
 
 If CMake Tools is correctly installed, you will be asked which CMake Kits(compiler) you want to use. 
