@@ -12,11 +12,11 @@ Ninja is also recommended for fast build (will be used automatically if present 
 
 ### Recommended Extentions for vscode
 
-- cpptools (basic language supports for C++ development)
+- [cpptools](https://github.com/microsoft/vscode-cpptools) (basic language supports for C++ development)
 - CMake (CMake language supports)
-- CMake Tools (Advanced Integration for using CMake in VScode with GUI)
-- CodeLLDB (better debugger than built-in gdb)
-- clangd (Advanced intellisense support and formatter powered by llvm)
+- [CMake Tools](https://github.com/microsoft/vscode-cmake-tools) (Advanced Integration for using CMake in VScode with GUI)
+- [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb) (better debugger than built-in gdb)
+- [clangd](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd) (Advanced intellisense support and formatter powered by llvm)
 
 ## Getting Started
 
@@ -32,7 +32,7 @@ Install Visual Studio.
 ### common
 
 1: Open `juce_cmake_vscode_example.code-workspace` with Visual Studio Code.
-If recommended extensions are not installed, notification to install them will come up.
+If recommended extensions are not fully installed, notification to install them will come up.
 
 If CMake Tools is correctly installed, you will be asked which CMake Kits(compiler) you want to use. 
 
@@ -48,9 +48,13 @@ If successfully built, right click JUCE_CMAKE_EXAMPLE/src/ExamplePlugin_Standalo
 
 Open Debug Menu in left Sidebar. And click Run button on the left in a menu of CMake Debug(workspace). Standalone version of your plugin will be launched.
 
+(Note that you can also debug from "Debug" button in right-click menu of CMake Tools but you cannot use CodeLLDB debugger in this case.)
+
 ## Resources
 
 [JUCE CMake API Documents](https://github.com/juce-framework/JUCE/blob/master/docs/CMake%20API.md)
+
+[sudara/pamplejuce](https://github.com/sudara/pamplejuce/) another great template repository for developing JUCE with CMake + Catch2 + GIthub Actions + C++20
 
 ## License
 
