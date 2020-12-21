@@ -29,7 +29,7 @@ open `~/.zshrc` and add `export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"`
 
 Install Visual Studio.
 
-### common
+### Setup - common
 
 Clone this repository. 
 
@@ -46,13 +46,48 @@ In macOS, choose `Clang x.x.x` which point to `/usr/bin/clang++` (clang provided
 
 In Windows, choose `Visual Studio Community 2019 Release - amd64`, you will have choices of architectures(like amd64/x86-amd64).
 
+### Build
+
 Open CMake Menu on your left sidebar (it will show up if CMake Tools is installed).
 
+Click "Configure All". This will take time at first time to build juceaide, an internal build tool by juce.
+
 Click "Build All Projects".
+
+### Debug
+
+### Debug StandAlone
 
 If successfully built, right click JUCE_CMAKE_EXAMPLE/src/ExamplePlugin_Standalone and select "set as Debug/Launch Target".
 
 Open Debug Menu in left Sidebar. And click Run button on the left in a menu of CMake Debug(workspace). Standalone version of your plugin will be launched.
+
+### Debug Plugin using AudioPluginHost
+
+You can debug VST Plugin using AudioPluginHost, an utility tool & demo app provided by JUCE.
+
+You need to configure JUCE with special argument `JUCE_BUILD_EXTRAS`. In this example, you can enable it by uncommenting `juce_cmake-vscode_example.code-workspace` like below.
+
+```json
+        "cmake.configureArgs": [
+            // if you want to build AAX, set PATH for SDK here.
+            //  "-DAAX_SDK_PATH="
+            // if you want to build AudioPluginHost to Test VST Plugin, uncomment this.
+            "-DJUCE_BUILD_EXTRAS=ON"
+        ],
+```
+
+Also, you need to set `COPY_PLUGIN_AFTER_BUILD` to `TRUE` in `juce_add_plugin` in CMakeLists.txt.
+This requires administrator permission when copy plugins into appropriate folder(You can do this by opening VSCode from right-click menu "run as administrator").
+
+Now, you can see `JUCE/extras/AudioPluginHost` target in build tree after configure step. 
+Build it and select "Set as Debug/Launch Target" in right-click menu.
+
+Open Debug Menu in left Sidebar. And click Run button on the left in a menu of CMake Debug(workspace). 
+
+AudioPluginHost will be launched. You can see your plugin in "Plugins" menu.
+
+---
 
 (Note that you can also debug from "Debug" button in right-click menu of CMake Tools but you cannot use CodeLLDB debugger in this case.)
 

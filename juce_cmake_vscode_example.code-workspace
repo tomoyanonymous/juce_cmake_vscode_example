@@ -31,6 +31,8 @@
         "cmake.configureArgs": [
             // if you want to build AAX, set PATH for SDK here.
             //  "-DAAX_SDK_PATH="
+            // if you want to build AudioPluginHost to Test VST Plugin, uncomment this.
+            // "-DJUCE_BUILD_EXTRAS=ON"
         ],
         "cmake.preferredGenerators": [
             "Ninja",
