@@ -14,7 +14,7 @@
         ]
     },
     "settings": {
-        "C_Cpp.intelliSenseEngine": "Disabled",
+        "C_Cpp.intelliSenseEngine": "disabled",
         "C_Cpp.default.cppStandard": "c++17",
         "cmake.buildDirectory": "${workspaceFolder}/build",
         "git.ignoreLimitWarning": true,
