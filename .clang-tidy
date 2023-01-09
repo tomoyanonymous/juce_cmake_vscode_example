@@ -7,5 +7,6 @@ misc-*,\
 readability-*,\
 performance-*,\
 portability-*,\
+-modernize-use-trailing-return-type\
 "
 HeaderFilterRegex: '**/Source/*\.(hpp|h)'
