@@ -42,7 +42,7 @@ juce_add_plugin(ExamplePlugin
     # HARDENED_RUNTIME_OPTIONS
     # APP_SANDBOX_ENABLED
     # APP_SANDBOX_INHERIT
-    # DESCRIPTION "" #設定するとProtoolsのプラグイン名がこのDescriptionになってしまう（バグ？）
+    # DESCRIPTION "" #when i set this option, the name of AAX plugin became this description(bug?)
     MICROPHONE_PERMISSION_ENABLED TRUE
     MICROPHONE_PERMISSION_TEXT "This applicaion requires a permission to use an audio input device of your computer. By Default, Built-In microphone will be used."
 
@@ -60,7 +60,7 @@ target_compile_definitions(ExamplePlugin
     # JUCE_DISPLAY_SPLASH_SCREEN=0 #if your plugin is distributed with GPL license or paid
 )
 
-juce_add_binary_data(ExamplePluginBinaries
+juce_add_binary_data(JuceLogoBinary
 SOURCES 
 ${CMAKE_SOURCE_DIR}/assets/juce-logo.svg
 )
@@ -71,7 +71,7 @@ target_sources(ExamplePlugin PRIVATE
 )
 
 target_link_libraries(ExamplePlugin PUBLIC
-ExamplePluginBinaries
+JuceLogoBinary
 juce::juce_audio_basics
 juce::juce_audio_devices
 juce::juce_audio_formats

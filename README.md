@@ -40,6 +40,9 @@ git clone https://github.com/tomoyanonymous/juce_cmake_vscode_example --recursiv
 Open `juce_cmake_vscode_example.code-workspace` with Visual Studio Code.
 If recommended extensions are not fully installed, notification to install them will come up.
 
+
+#### Build
+
 If CMake Tools is correctly installed, you will be asked which CMake Kits(compiler) you want to use. 
 
 In macOS, choose `Clang x.x.x` which point to `/usr/bin/clang++` (clang provided by xcode. of course you can choose other compilers if you have).
@@ -50,17 +53,33 @@ Open CMake Menu on your left sidebar (it will show up if CMake Tools is installe
 
 Click "Build All Projects".
 
+#### Debugging
+
 If successfully built, right click JUCE_CMAKE_EXAMPLE/src/ExamplePlugin_Standalone and select "set as Debug/Launch Target".
 
 Open Debug Menu in left Sidebar. And click Run button on the left in a menu of CMake Debug(workspace). Standalone version of your plugin will be launched.
 
 (Note that you can also debug from "Debug" button in right-click menu of CMake Tools but you cannot use CodeLLDB debugger in this case.)
 
+
+#### (Optional) Setting JUCE version.
+
+The version of JUCE is v7.0.3 by default currently. Juce is located as a git submodule in `lib` directory, so you can switch the version by checking out in the directory like this.
+
+```sh
+cd lib/JUCE
+git tag # show the tagged releases.
+git checkout 7.0.2
+# If you need, you can commit the change of JUCE version in the main directory.
+cd ..
+git commit -m "Changed the version of JUCE."
+```
+
 ## Resources
 
 [JUCE CMake API Documents](https://github.com/juce-framework/JUCE/blob/master/docs/CMake%20API.md)
 
-[sudara/pamplejuce](https://github.com/sudara/pamplejuce/) another great template repository for developing JUCE with CMake + Catch2 + GIthub Actions + C++20
+[sudara/pamplejuce](https://github.com/sudara/pamplejuce/) another great template repository for developing JUCE with CMake + Catch2 + GitHub Actions + C++20
 
 ## License
 
