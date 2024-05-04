@@ -15,8 +15,9 @@
 //==============================================================================
 /**
  */
-class TestpluginAudioProcessor : public juce::AudioProcessor {
- public:
+class TestpluginAudioProcessor : public juce::AudioProcessor
+{
+public:
   //==============================================================================
   TestpluginAudioProcessor();
   ~TestpluginAudioProcessor() override;
@@ -54,7 +55,7 @@ class TestpluginAudioProcessor : public juce::AudioProcessor {
   void getStateInformation(juce::MemoryBlock &destData) override;
   void setStateInformation(const void *data, int sizeInBytes) override;
 
- private:
+private:
   Glimmer mGlimmer;
   //==============================================================================
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(TestpluginAudioProcessor)

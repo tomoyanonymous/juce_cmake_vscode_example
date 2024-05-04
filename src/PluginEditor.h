@@ -15,8 +15,9 @@
 //==============================================================================
 /**
  */
-class TestpluginAudioProcessorEditor : public juce::AudioProcessorEditor {
- public:
+class TestpluginAudioProcessorEditor : public juce::AudioProcessorEditor
+{
+public:
   TestpluginAudioProcessorEditor(TestpluginAudioProcessor &);
   ~TestpluginAudioProcessorEditor() override;
 
@@ -24,7 +25,7 @@ class TestpluginAudioProcessorEditor : public juce::AudioProcessorEditor {
   void paint(juce::Graphics &) override;
   void resized() override;
 
- private:
+private:
   // This reference is provided as a quick way for your editor to
   // access the processor object that created it.
   TestpluginAudioProcessor &audioProcessor;

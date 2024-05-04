@@ -1,3 +1,6 @@
----
-Language: Cpp
-BasedOnStyle: LLVM
+{
+  "Language": "Cpp",
+  "IndentWidth": 2,
+  "UseTab": "Never",
+  "BreakBeforeBraces": "Allman",
+}

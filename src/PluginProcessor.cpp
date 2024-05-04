@@ -29,11 +29,13 @@ TestpluginAudioProcessor::TestpluginAudioProcessor()
 TestpluginAudioProcessor::~TestpluginAudioProcessor() {}
 
 //==============================================================================
-const juce::String TestpluginAudioProcessor::getName() const {
+const juce::String TestpluginAudioProcessor::getName() const
+{
   return JucePlugin_Name;
 }
 
-bool TestpluginAudioProcessor::acceptsMidi() const {
+bool TestpluginAudioProcessor::acceptsMidi() const
+{
 #if JucePlugin_WantsMidiInput
   return true;
 #else
@@ -41,7 +43,8 @@ bool TestpluginAudioProcessor::acceptsMidi() const {
 #endif
 }
 
-bool TestpluginAudioProcessor::producesMidi() const {
+bool TestpluginAudioProcessor::producesMidi() const
+{
 #if JucePlugin_ProducesMidiOutput
   return true;
 #else
@@ -49,7 +52,8 @@ bool TestpluginAudioProcessor::producesMidi() const {
 #endif
 }
 
-bool TestpluginAudioProcessor::isMidiEffect() const {
+bool TestpluginAudioProcessor::isMidiEffect() const
+{
 #if JucePlugin_IsMidiEffect
   return true;
 #else
@@ -59,39 +63,46 @@ bool TestpluginAudioProcessor::isMidiEffect() const {
 
 double TestpluginAudioProcessor::getTailLengthSeconds() const { return 0.0; }
 
-int TestpluginAudioProcessor::getNumPrograms() {
-  return 1;  // NB: some hosts don't cope very well if you tell them there are 0
-             // programs, so this should be at least 1, even if you're not
-             // really implementing programs.
+int TestpluginAudioProcessor::getNumPrograms()
+{
+  return 1; // NB: some hosts don't cope very well if you tell them there are 0
+            // programs, so this should be at least 1, even if you're not
+            // really implementing programs.
 }
 
 int TestpluginAudioProcessor::getCurrentProgram() { return 0; }
 
 void TestpluginAudioProcessor::setCurrentProgram(int index) {}
 
-const juce::String TestpluginAudioProcessor::getProgramName(int index) {
+const juce::String TestpluginAudioProcessor::getProgramName(int index)
+{
   return {};
 }
 
 void TestpluginAudioProcessor::changeProgramName(int index,
-                                                 const juce::String &newName) {}
+                                                 const juce::String &newName)
+{
+}
 
 //==============================================================================
 void TestpluginAudioProcessor::prepareToPlay(double sampleRate,
-                                             int samplesPerBlock) {
+                                             int samplesPerBlock)
+{
   int numChannels = getTotalNumInputChannels();
   mGlimmer.prepare(static_cast<float>(sampleRate), samplesPerBlock,
                    numChannels);
 }
 
-void TestpluginAudioProcessor::releaseResources() {
+void TestpluginAudioProcessor::releaseResources()
+{
   // When playback stops, you can use this as an opportunity to free up any
   // spare memory, etc.
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
 bool TestpluginAudioProcessor::isBusesLayoutSupported(
-    const BusesLayout &layouts) const {
+    const BusesLayout &layouts) const
+{
 #if JucePlugin_IsMidiEffect
   juce::ignoreUnused(layouts);
   return true;
@@ -114,7 +125,8 @@ bool TestpluginAudioProcessor::isBusesLayoutSupported(
 #endif
 
 void TestpluginAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer,
-                                            juce::MidiBuffer &midiMessages) {
+                                            juce::MidiBuffer &midiMessages)
+{
   juce::ScopedNoDenormals noDenormals;
   auto totalNumInputChannels = getTotalNumInputChannels();
   auto totalNumOutputChannels = getTotalNumOutputChannels();
@@ -126,24 +138,27 @@ void TestpluginAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer,
 }
 
 //==============================================================================
-bool TestpluginAudioProcessor::hasEditor() const {
-  return true;  // (change this to false if you choose to not supply an editor)
+bool TestpluginAudioProcessor::hasEditor() const
+{
+  return true; // (change this to false if you choose to not supply an editor)
 }
 
-juce::AudioProcessorEditor *TestpluginAudioProcessor::createEditor() {
+juce::AudioProcessorEditor *TestpluginAudioProcessor::createEditor()
+{
   return new TestpluginAudioProcessorEditor(*this);
 }
 
 //==============================================================================
-void TestpluginAudioProcessor::getStateInformation(
-    juce::MemoryBlock &destData) {
+void TestpluginAudioProcessor::getStateInformation(juce::MemoryBlock &destData)
+{
   // You should use this method to store your parameters in the memory block.
   // You could do that either as raw data, or use the XML or ValueTree classes
   // as intermediaries to make it easy to save and load complex data.
 }
 
 void TestpluginAudioProcessor::setStateInformation(const void *data,
-                                                   int sizeInBytes) {
+                                                   int sizeInBytes)
+{
   // You should use this method to restore your parameters from this memory
   // block, whose contents will have been created by the getStateInformation()
   // call.
@@ -151,6 +166,7 @@ void TestpluginAudioProcessor::setStateInformation(const void *data,
 
 //==============================================================================
 // This creates new instances of the plugin..
-juce::AudioProcessor *JUCE_CALLTYPE createPluginFilter() {
+juce::AudioProcessor *JUCE_CALLTYPE createPluginFilter()
+{
   return new TestpluginAudioProcessor();
 }

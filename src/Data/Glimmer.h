@@ -2,13 +2,15 @@
 
 #include <JuceHeader.h>
 
-class Glimmer {
+class Glimmer
+{
 public:
   Glimmer();
   ~Glimmer();
   void prepare(const float &sampleRate, const int &samplesPerBlock,
                const int &numChannels);
   void process(AudioBuffer<float> &buffer);
+  double getBpm();
   AudioBuffer<float> panner(AudioBuffer<float> &buffer, const float *leftInput,
                             const float *rightInput);
 
@@ -17,4 +19,5 @@ private:
   float mSampleRate = 44100.f;
   int mSamplesPerBlock = 512;
   int mNumChannels = 2;
+  int mSamplesCounter = 0;
 };
