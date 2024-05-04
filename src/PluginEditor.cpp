@@ -17,9 +17,6 @@ TestpluginAudioProcessorEditor::TestpluginAudioProcessorEditor(
   // Make sure that before the constructor has finished, you've set the
   // editor's size to whatever you need it to be.
   setSize(400, 300);
-  // load Image from BinaryData
-  svgimg = juce::Drawable::createFromImageData(BinaryData::jucelogo_svg,
-                                               BinaryData::jucelogo_svgSize);
 }
 
 TestpluginAudioProcessorEditor::~TestpluginAudioProcessorEditor() {}
@@ -30,8 +27,6 @@ void TestpluginAudioProcessorEditor::paint(juce::Graphics &g) {
   // solid colour)
   g.fillAll(
       getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
-  svgimg->drawWithin(g, getLocalBounds().toFloat(),
-                     juce::Justification::centred, 1);
 
   g.setColour(juce::Colours::black);
   g.setFont(30.0f);

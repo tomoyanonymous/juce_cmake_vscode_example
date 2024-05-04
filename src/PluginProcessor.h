@@ -10,6 +10,8 @@
 
 #include <JuceHeader.h>
 
+#include "Data/Glimmer.h"
+
 //==============================================================================
 /**
  */
@@ -53,6 +55,7 @@ class TestpluginAudioProcessor : public juce::AudioProcessor {
   void setStateInformation(const void *data, int sizeInBytes) override;
 
  private:
+  Glimmer mGlimmer;
   //==============================================================================
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(TestpluginAudioProcessor)
 };

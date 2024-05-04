@@ -68,6 +68,7 @@ ${CMAKE_SOURCE_DIR}/assets/juce-logo.svg
 target_sources(ExamplePlugin PRIVATE
     PluginEditor.cpp
     PluginProcessor.cpp
+    Data/Glimmer.cpp
 )
 
 target_link_libraries(ExamplePlugin PUBLIC
