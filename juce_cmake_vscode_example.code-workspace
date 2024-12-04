@@ -25,12 +25,17 @@
       "-header-insertion=never",
       "--query-driver=\"/usr/bin/clang++\""
     ],
-    "cmake.ctestArgs": ["--verbose"],
+    "cmake.ctestArgs": [
+      "--verbose"
+    ],
     "cmake.configureArgs": [
       // if you want to build AAX, set PATH for SDK here.
       //  "-DAAX_SDK_PATH="
     ],
-    "cmake.preferredGenerators": ["Ninja", "Unix Makefiles"]
+    "cmake.preferredGenerators": [
+      "Ninja",
+      "Unix Makefiles"
+    ]
   },
   "launch": {
     "configurations": [
