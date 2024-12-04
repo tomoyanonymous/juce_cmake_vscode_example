@@ -38,15 +38,23 @@
         ],
     },
     "launch": {
-        "configurations": [
-            {
-                "type": "lldb",
-                "request": "launch",
-                "name": "CMake Debug",
-                "program": "${command:cmake.launchTargetPath}",
-                "args": [],
-                "cwd": "${workspaceFolder}"
-            },
-        ]
+        "configurations": [                        
+        {
+            "name": "Debug via lldb",
+            "request": "launch",
+            "type" : "lldb",            
+            "program": "${command:cmake.launchTargetPath}",
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Debug via cppvsdbg",
+            "request": "launch",
+            "type": "cppvsdbg",
+            "program": "${command:cmake.launchTargetPath}",            
+            "args": [],
+            "cwd": "${workspaceFolder}",                        
+        },
+    ]
     }
 }
